@@ -33,4 +33,32 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const page = defineCollection({
+  loader: async () => {
+    const postsResponse = await client.queries.pageConnection();
+
+    // Map Tina posts to the correct format for Astro
+    return postsResponse.data.pageConnection.edges
+      ?.filter((p) => !!p)
+      .map((p) => {
+        const node = p?.node;
+
+        return {
+          ...node,
+          id: node?._sys.relativePath.replace(/\.mdx?$/, ""), // Generate clean URLs
+          tinaInfo: node?._sys, // Include Tina system info if needed
+        };
+      });
+  },
+  schema: z.object({
+    tinaInfo: z.object({
+      filename: z.string(),
+      basename: z.string(),
+      path: z.string(),
+      relativePath: z.string(),
+    }),
+    title: z.string(),
+    body: z.any(),
+  }),
+})
+export const collections = { blog, page };

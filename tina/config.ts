@@ -1,4 +1,7 @@
 import { defineConfig } from "tinacms";
+import { BlogCollection } from "./collections/blog";
+import { GlobalConfigCollection } from "./collections/global-config";
+import { PageCollection } from "./collections/page";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -28,84 +31,9 @@ export default defineConfig({
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
-      {
-        name: "blog",
-        label: "Blogs",
-        path: "src/content/blog",
-        format: "mdx",
-        ui: {
-          router({ document }) {
-            return `/blog/${document._sys.filename}`;
-          },
-        },
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            name: "description",
-            label: "Description",
-            type: "string",
-          },
-          {
-            name: "pubDate",
-            label: "Publication Date",
-            type: "datetime",
-          },
-          {
-            name: "updatedDate",
-            label: "Updated Date",
-            type: "datetime",
-          },
-          {
-            name: "heroImage",
-            label: "Hero Image",
-            type: "image",
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-      {
-        name: "config",
-        label: "Global Config",
-        path: "src/content/config",
-        format: "json",
-        ui: {
-          global: true,
-        },        
-        fields: [
-          {
-            name: "seo",
-            label: "General site config",
-            type: "object",
-            fields: [
-              {
-                name: "title",
-                label: "Site title for SEO",
-                type: "string",
-                required: true,
-              },
-              {
-                name: "description",
-                label: "Site description for SEO",
-                type: "string",
-                required: true,
-              },
-              // Add more settings here...
-            ],
-          },
-          // Add other config fields here...
-        ]
-        },
+      BlogCollection,
+      PageCollection,
+      GlobalConfigCollection,
     ],
   },
 });

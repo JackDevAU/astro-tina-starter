@@ -3,7 +3,6 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro"
 import client from "../../../tina/__generated__/client";
 import AdminBlogPost from "../../../tina/pages/AdminBlogPost";
-import TinaWrapper from "../../layouts/admin-wrapper";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");

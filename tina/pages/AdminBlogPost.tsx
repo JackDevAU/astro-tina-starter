@@ -2,7 +2,7 @@ import React from 'react';
 import { tinaField, useTina } from "tinacms/dist/react";
 import type { BlogQuery, BlogQueryVariables } from '../__generated__/types';
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import FormattedDate from '../../src/components/FormattedDate.tsx';
+import FormattedDate from '../../src/components/react/FormattedDate.tsx';
 
 
 type Props = {
@@ -12,7 +12,6 @@ type Props = {
 }
 
 export default function AdminBlogPost(props: Props) {
-	// console.log(props);
 
 	const { data } = useTina({
 		query: props.query,
