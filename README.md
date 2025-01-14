@@ -1,12 +1,13 @@
-# Astro Starter Kit: Blog
+This is a [Tina CMS](https://tina.io/) starter project.
+
+# Astro + TinaCMS Starter Kit: Blog
 
 ```sh
-npm create astro@latest -- --template blog
+npx create-tina-app@latest --template astro-tina-starter
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+And start editing with TinaCMS at `/admin`! 
+
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
@@ -14,35 +15,59 @@ npm create astro@latest -- --template blog
 
 Features:
 
-- ✅ Minimal styling (make it your own!)
+- ✅ Markdown & MDX support + TinaCMS Markdown Component
+- ✅ TinaCMS Collections (Pages, Blogs, Config)
+- ✅ Visual Editing using Custom Loaders and Client Directives
 - ✅ 100/100 Lighthouse performance
+- ✅ View transitions are enabled 
+- ✅ Minimal styling (make it your own!)
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
 - ✅ RSS Feed support
-- ✅ Markdown & MDX support
+
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of your project, you'll see the following folders and files:
 
 ```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
 ├── README.md
+├── astro-tina-directive/
+├── astro.config.mjs
 ├── package.json
+├── pnpm-lock.yaml
+├── public/
+├── src
+│   ├── components
+│   ├── content
+│   ├── content.config.ts
+│   ├── layouts
+│   ├── pages
+│   └── styles
+├── tina
+│   ├── collections
+│   ├── components
+│   ├── config.ts
+│   ├── pages
+│   └── tina-lock.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Each page is exposed as a route based on its file name which are generated from the content under `src/content/` (excluding the `config` folder). 
+
+To enable Visual Editing with TinaCMS we have had to use React components and a new `client:tina` Directive. Which is the code located under `astro-tina-directive`. 
+
+Under the `tina/` folder we have, `collections/` which holds our TinaCMS schema definitions. Under `components/` we have a custom Icon Component that is used within the TinaCMS UI. Under `pages/` we have the "wrappers" that make the Visual Editing work, using the `useTina` hook. 
+
+The `pages/index.astro` is the "Home" page - This is a special case and has been setup to look for the `content/page/home.mdx` file. 
 
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
 The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+
+> [!NOTE]
+> To use `getCollection()` we need to add a schema in `content.config.ts` with a custom loader that uses the correct TinaCMS Collection.
+
 
 Any static assets, like images, can be placed in the `public/` directory.
 
@@ -61,7 +86,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Check out the [TinaCMS documentation](https://tina.io/docs) and the [Astro documentation](https://docs.astro.build) or jump into our [TinaCMS Discord server]([https://astro.build/chat](https://discord.gg/cG2UNREu)).
 
 ## Credit
 
