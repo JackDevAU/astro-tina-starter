@@ -1,6 +1,6 @@
 ---
 import config from "../content/config/config.json";
-import ReactIcon from "../components/react/icon";
+import IconLink from "./react/IconLink";
 const today = new Date();
 ---
 
@@ -11,9 +11,7 @@ const today = new Date();
 		{
 			config?.contactLinks?.map((link) => {
 				return (
-					<a href={link.link} target="_blank">
-						<ReactIcon iconName={link.icon} />
-					</a>
+					<IconLink {...link} />
 				);
 			})
 		}

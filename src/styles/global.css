@@ -158,3 +158,17 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+.social-links {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+	margin-top: 1em;
+}
+.social-links a {
+	text-decoration: none;
+	color: rgb(var(--gray));
+}
+.social-links a:hover {
+	color: rgb(var(--gray-dark));
+}

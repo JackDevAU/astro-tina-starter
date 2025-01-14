@@ -1,7 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import config from "../content/config/config.json";
-import ReactIcon from "./react/icon";
+import IconLink from "./react/IconLink";
 ---
 
 <header>
@@ -18,10 +18,7 @@ import ReactIcon from "./react/icon";
 			{
 				config?.contactLinks?.map((link) => {
 					return (
-						<a href={link.link} target="_blank" aria-label={`Go to ${link.title}`}>
-							<span class="sr-only">{link.title}</span>
-							<ReactIcon iconName={link.icon} />
-						</a>
+						<IconLink {...link} />
 					);
 				})
 			}
