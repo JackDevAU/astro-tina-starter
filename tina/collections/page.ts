@@ -12,9 +12,8 @@ export const PageCollection: Collection = {
   },
   fields: [
     {
-      name: "title",
+      name: "seoTitle",
       type: "string",
-      isTitle: true,
       required: true
     },
     {

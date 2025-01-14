@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
-    "devv": "tinacms dev -c \"astro dev --verbose\"",
     "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro"
