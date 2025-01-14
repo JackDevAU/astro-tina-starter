@@ -19,6 +19,7 @@ import ReactIcon from "./react/icon";
 				config?.contactLinks?.map((link) => {
 					return (
 						<a href={link.link} target="_blank">
+							<span class="sr-only">{link.title}</span>
 							<ReactIcon iconName={link.icon} />
 						</a>
 					);
